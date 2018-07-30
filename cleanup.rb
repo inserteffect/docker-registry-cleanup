@@ -33,7 +33,7 @@ if (username && password.nil?) || (username.nil? && password)
 end
 
 keep_versions = ENV['KEEP_VERSIONS'] || 10
-ignore_list = ENV['IGNORE_TAGS'] || []
+ignore_list = ENV['IGNORE_TAGS'] || ''
 ignore_list = ignore_list.split(',')
 
 base_uri = URI.parse "#{registry_url}/v2/#{repository_name}"
