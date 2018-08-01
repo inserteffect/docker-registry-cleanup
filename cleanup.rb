@@ -28,6 +28,10 @@ tag_prefix = ENV['TAG_PREFIX'] || no_tag_prefix
 username = ENV['USERNAME']
 password = ENV['PASSWORD']
 
+if !URI.parse(registry_host).instance_of? URI::HTTPS
+  registry_host = "https://#{registry_host}"
+end
+
 if (username && password.nil?) || (username.nil? && password)
   no_credentials
 end
