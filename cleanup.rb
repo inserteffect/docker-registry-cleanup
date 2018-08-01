@@ -7,8 +7,8 @@ def no_credentials
   exit
 end
 
-def no_registry_url
-  puts 'A registry URL must be present via `REGISTRY_URL` environment variable'
+def no_registry_host
+  puts 'A registry host must be present via `REGISTRY_HOST` environment variable'
   exit
 end
 
@@ -22,7 +22,7 @@ def no_tag_prefix
   exit
 end
 
-registry_url = ENV['REGISTRY_URL'] || no_registry_url
+registry_host = ENV['REGISTRY_HOST'] || no_registry_host
 repository_name = ENV['REPOSITORY_NAME'] || no_repository_name
 tag_prefix = ENV['TAG_PREFIX'] || no_tag_prefix
 username = ENV['USERNAME']
@@ -36,7 +36,7 @@ keep_versions = ENV['KEEP_VERSIONS'].to_i || 10
 ignore_list = ENV['IGNORE_TAGS'] || ''
 ignore_list = ignore_list.split(',')
 
-base_uri = URI.parse "#{registry_url}/v2/#{repository_name}"
+base_uri = URI.parse "#{registry_host}/v2/#{repository_name}"
 
 # get tag list
 tags_uri = URI.parse "#{base_uri}/tags/list"
