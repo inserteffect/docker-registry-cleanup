@@ -36,7 +36,7 @@ if (username && password.nil?) || (username.nil? && password)
   no_credentials
 end
 
-keep_versions = ENV['KEEP_VERSIONS'].to_i || 10
+keep_versions = ENV['KEEP_VERSIONS'].nil? ? 10 : ENV['KEEP_VERSIONS'].to_i
 ignore_list = ENV['IGNORE_TAGS'] || ''
 ignore_list = ignore_list.split(',')
 
