@@ -57,7 +57,7 @@ tags_response = Net::HTTP.start(
   http.request(tags_request)
 end
 
-tags = JSON.parse(tags_response.body)['tags']
+tags = JSON.parse(tags_response.body)['tags'] || []
 filtered_tags = tags - ignore_list
 sorted_tags = filtered_tags.sort_by do |tag|
   build_number = tag
